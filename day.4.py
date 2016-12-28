@@ -2,6 +2,7 @@
 
 totalSum = 0
 
+realRooms = []
 with open('day.4.dat') as f:
     for line in f:
         bracket = line.find('[')
@@ -35,5 +36,16 @@ with open('day.4.dat') as f:
         genCode = ''.join([x[0] for x in repeats[:5]])
         if genCode == code:
             totalSum = totalSum + int(sectorID)
+            unencrypt = ''
+            aord = ord('a')
+            for c in name:
+                unencrypt = unencrypt + chr(((ord(c) - aord + int(sectorID)) % 26) + aord)
+            realRooms.append(unencrypt + '-' + sectorID)
 
 print(totalSum)
+print(realRooms)
+i = 0
+for r in realRooms:
+    if 'north' in r:
+        print(r, i)
+    i = i + 1

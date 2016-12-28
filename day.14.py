@@ -15,7 +15,7 @@ def containsTriplet(h):
 
 def containsQuintet(h, c):
     for i in range(len(h) - 4):
-        if h[i] == h[i+1] and h[i] == h[i+2] and h[i] == h[i+3] and h[i] == h[i+4]:
+        if c == h[i] and h[i] == h[i+1] and h[i] == h[i+2] and h[i] == h[i+3] and h[i] == h[i+4]:
             return h[i]
     return None
 
@@ -27,6 +27,10 @@ def genHash(salt, index):
         m = hashlib.md5()
         m.update(test)
         h = m.hexdigest()
+        for i in range(2016):
+            m = hashlib.md5()
+            m.update(h)
+            h = m.hexdigest()
         hashes[index] = h
     return h
 

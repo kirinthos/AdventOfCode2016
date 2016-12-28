@@ -40,4 +40,5 @@ with open('day.7.dat') as f:
                 count = count + 1
                 break
 
+
 print(count)
